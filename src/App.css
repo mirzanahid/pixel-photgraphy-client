@@ -1,4 +1,7 @@
 /*===============typography css start===============  */
+a,a:hover,a:focus{
+  text-decoration: none !important;
+}
 
 .nav-items {
   font-family: Roboto;
@@ -12,24 +15,36 @@
   position: relative;
 
 }
-
+/* 
 .active {
-  color: #939580;
+  color: #D4B0A5;
 }
 
 .active::after {
   width: 30px;
   height: 3px;
-  background: #939580;
+  background: #D4B0A5;
   position: absolute;
   bottom: -5px;
   left: 0;
   content: '';
+} */
+
+
+.heading-2 {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #323232;
 }
 
-
-
-
+.footer-bottom{
+   font-family: 'Open Sans';
+   font-size: 14px;
+   font-weight: 400;
+   color: #939580;
+}
 /*===============typography css end=================  */
 
 
