@@ -1,0 +1,44 @@
+/*===============typography css start===============  */
+
+.nav-items {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #323232;
+  display: inline-block;
+  text-decoration: none;
+  margin-left: 30px;
+  position: relative;
+
+}
+
+.active {
+  color: #939580;
+}
+
+.active::after {
+  width: 30px;
+  height: 3px;
+  background: #939580;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  content: '';
+}
+
+
+
+
+/*===============typography css end=================  */
+
+
+
+
+/* 
+main heading: #939580;
+heading : #323232 ;
+button : c79889;
+light button : #D4B0A5 ;
+paragraph: #848892;
+*/
