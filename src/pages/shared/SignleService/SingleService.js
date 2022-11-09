@@ -1,12 +1,16 @@
 import React from 'react';
 import { FaStar } from "react-icons/fa";
+import { PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 import './SingleService.css'
 const SingleService = () => {
     return (
         <div className='service'>
             <div className="service-image-container">
+                <PhotoView  src="https://cdn.sweetescape.com/occasion_portfolios/138/processed_prewedding-5.jpg">
                 <img className='service-image' src="https://cdn.sweetescape.com/occasion_portfolios/138/processed_prewedding-5.jpg" alt="" />
+                </PhotoView>
+                
             </div>
             <div className="service-inner">
                 <h3 className='service-title'>Pre Wedding</h3>
