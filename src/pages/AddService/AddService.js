@@ -15,14 +15,29 @@ const AddService = () => {
         const description = form.description.value;
 
         const addService = {
-            
+
             title: title,
             thumbnail_url: image_url, 
-            serviceRating: rating,
-            servicePrice: price,
-            serviceDescription :description
+            ratings: rating,
+            price: price,
+            description :description
         }
-
+       fetch('http://localhost:5000/addService',{
+        method: 'POST',
+        headers: {
+            'content-type': "application/json"
+        },
+        body:JSON.stringify(addService)
+       })
+       .then(res=>res.json())
+       .then(data =>{
+        console.log(data)
+        if(data.acknowledged){
+            alert('Service added successfully')
+            form.reset();
+        }
+       })
+       .catch(error => console.error(error));
 
 
     }

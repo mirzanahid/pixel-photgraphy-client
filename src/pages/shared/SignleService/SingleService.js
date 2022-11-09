@@ -14,7 +14,7 @@ const SingleService = ({ service }) => {
                 </div>
                 <div className="service-inner">
                     <h3 className='service-title'>{title}</h3>
-                    <p className='service-pra'>{description.length > 100 ? description.slice(0, 95) + '...' : description}</p>
+                    <p className='service-pra'>{description?.length > 100 ? description.slice(0, 95) + '...' : description}</p>
                     <p className='ratings'>Ratings: <span>{ratings}</span> <FaStar /></p>
                     <p className='service-price'>$<span>{price}</span> hour</p>
                     <Link to={`/service_details/${_id}`} className='secondary-button service-btn'>View Details</Link>
