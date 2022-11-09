@@ -8,6 +8,7 @@ import Home from '../pages/Home/Home';
 import MyReviews from '../pages/MyReviews/MyReviews';
 import AllServices from '../pages/shared/AllServices/AllServices';
 import Login from '../pages/shared/Login/Login';
+import ServiceDetails from '../pages/shared/ServiceDetails/ServiceDetails';
 import Signup from '../pages/shared/Signup/Signup';
 
 
@@ -36,6 +37,11 @@ export const router = createBrowserRouter([
             {
                 path: '/allServices',
                 element: <AllServices></AllServices>
+            },
+            {
+                path: '/service_details/:id',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
             },
             {
                 path: '/addservice',

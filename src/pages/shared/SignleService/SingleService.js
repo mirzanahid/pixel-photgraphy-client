@@ -5,7 +5,7 @@ import { PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 import './SingleService.css'
 const SingleService = ({ service }) => {
-    const { title, thumbnail_url, ratings, price, description } = service;
+    const { title, thumbnail_url, ratings, price, description, _id } = service;
     return (
         <Col lg='4' className='mt-4'>
             <div className='service'>
@@ -17,7 +17,7 @@ const SingleService = ({ service }) => {
                     <p className='service-pra'>{description.length > 100 ? description.slice(0, 95) + '...' : description}</p>
                     <p className='ratings'>Ratings: <span>{ratings}</span> <FaStar /></p>
                     <p className='service-price'>$<span>{price}</span> hour</p>
-                    <Link className='secondary-button service-btn'>View Details</Link>
+                    <Link to={`/service_details/${_id}`} className='secondary-button service-btn'>View Details</Link>
                 </div>
             </div>
         </Col>
