@@ -1,22 +1,26 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import { FaStar } from "react-icons/fa";
 import { PhotoView } from 'react-photo-view';
 import { Link } from 'react-router-dom';
 import './SingleService.css'
-const SingleService = () => {
+const SingleService = ({ service }) => {
+    const { title, thumbnail_url, ratings, price, description } = service;
     return (
-        <div className='service'>
-            <div className="service-image-container">
-                    <img className='service-image' src="https://cdn.sweetescape.com/occasion_portfolios/138/processed_prewedding-5.jpg" alt="" />
+        <Col lg='4' className='mt-4'>
+            <div className='service'>
+                <div className="service-image-container">
+                    <img className='service-image' src={thumbnail_url} alt="" />
+                </div>
+                <div className="service-inner">
+                    <h3 className='service-title'>{title}</h3>
+                    <p className='service-pra'>{description.length > 100 ? description.slice(0, 95) + '...' : description}</p>
+                    <p className='ratings'>Ratings: <span>{ratings}</span> <FaStar /></p>
+                    <p className='service-price'>$<span>{price}</span> hour</p>
+                    <Link className='secondary-button service-btn'>View Details</Link>
+                </div>
             </div>
-            <div className="service-inner">
-                <h3 className='service-title'>Pre Wedding</h3>
-                <p className='service-pra'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur beatae molestias voluptatibus. Beatae, perferendis quod.</p>
-                <p className='ratings'>Ratings: <span>5</span> <FaStar /></p>
-                <p className='service-price'>$<span>120</span> hour</p>
-                <Link className='secondary-button service-btn'>View Details</Link>
-            </div>
-        </div>
+        </Col>
     );
 };
 

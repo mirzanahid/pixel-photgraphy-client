@@ -9,8 +9,6 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
-    console.log(user)
-
     return (
         <Navbar className='navbar' expand="lg">
             <Container>
