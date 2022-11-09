@@ -1,7 +1,8 @@
 import React from 'react';
-import { Col, Container, FloatingLabel, Row } from 'react-bootstrap';
+import { Breadcrumb, Col, Container, FloatingLabel, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 const AddService = () => {
 
@@ -45,6 +46,13 @@ const AddService = () => {
         <div>
             <div className="page-header">
                 <h3 className='page-header-title'>Add Services</h3>
+                <Breadcrumb className='bread'>
+                    <Breadcrumb.Item><Link to={'/home'}>Home</Link></Breadcrumb.Item>
+                    <Breadcrumb.Item >
+                        <Link to={'/allServices'}>All Services</Link>
+                    </Breadcrumb.Item>
+                    <Breadcrumb.Item active>Add Services</Breadcrumb.Item>
+                </Breadcrumb>
             </div>
             <div className="page-inner">
                 <Container>

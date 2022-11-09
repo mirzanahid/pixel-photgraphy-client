@@ -44,25 +44,39 @@ a:focus {
   color: #fff;
 }
 
-/*===============typography css end=================  */
-/*===============color css start=================  */
-.primary-color {
-  color: #FF8DC7;
+.bread {
+  display: inline-block;
+  margin-top: 10px;
 }
 
-.secondary-color {
+.bread a {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 12px;
   color: #fff;
-}
 
-.thirdly-color {
+}
+.bread a:hover{
+  color: #f1f1f1;
+}
+.bread li{
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 12px;
+  color: #777 !important;
+}
+.empty-message{
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 12px;
   color: #000;
+  text-align: center;
 }
+/*===============typography css end=================  */
 
-.primary-bg {
-  background: #FF8DC7;
-}
-
-/*===============color css end=================  */
 /*===============buttons css start=================  */
 
 .primary-button {
@@ -102,6 +116,7 @@ a:focus {
   background: #fff;
   color: #FF8DC7 !important;
 }
+
 .white-button {
   font-family: Roboto;
   font-size: 18px;
@@ -121,6 +136,7 @@ a:focus {
   background: #FF8DC7;
   color: #fff !important;
 }
+
 /*===============buttons css end=================  */
 /*==============page header css start=================  */
 .page-header {
@@ -145,20 +161,22 @@ a:focus {
 
 /*==============page header css end=================  */
 /*==============form  css start=================  */
- form {
+form {
   background: #fff;
   padding: 35px 35px;
   width: 550px;
   border: 1px solid #FF8DC7;
 }
- label {
+
+label {
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
   color: #000;
 }
- input {
+
+input {
   font-family: Roboto;
   font-size: 14px;
   font-weight: 500;
@@ -181,7 +199,8 @@ a:focus {
   border-radius: 0 !important;
 
 }
-.form-heading{
+
+.form-heading {
   margin-bottom: 40px;
   text-align: center;
   font-family: Roboto;

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
+import { Link } from 'react-router-dom';
 import './Blog.css'
 
 const Blog = () => {
@@ -8,6 +9,10 @@ const Blog = () => {
         <div>
             <div className="page-header">
                 <h3 className='page-header-title'>Blog</h3>
+                <Breadcrumb className='bread'>
+                    <Breadcrumb.Item><Link to={'/'}>Home</Link></Breadcrumb.Item>
+                    <Breadcrumb.Item active>Blog</Breadcrumb.Item>
+                </Breadcrumb>
             </div>
             <div className="page-inner blog">
                 <Container>
