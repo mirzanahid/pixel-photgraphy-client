@@ -1,0 +1,64 @@
+.service {
+    width: 300px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  
+}
+.service-inner{
+    padding: 20px 20px;
+}
+.service-image {
+    width: 100%;
+}
+
+.service-title {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000;
+}
+
+.service-pra {
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #777;
+}
+.ratings{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+.ratings span{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000;
+    margin-left: 5px;
+}
+.ratings svg{
+    font-size: 18px;
+    color: gold;
+    margin-left: 5px;
+}
+
+.service-price{
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #000;
+    margin: 25px 0;
+}
+
+/* .service-btn{
+    position: absolute;
+    bottom: 20px ;
+    left: 0;
+} */

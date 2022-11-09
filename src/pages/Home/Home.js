@@ -1,12 +1,16 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import useTitle from '../../hooks/useTitle';
+import Banner from '../shared/Banner/Banner';
+import Services from '../shared/Services/Services';
 
 const Home = () => {
     useTitle('Home')
     return (
-        <div>
-            <h1>this is home page</h1>
-        </div>
+        <>
+            <Banner></Banner>
+            <Services></Services>
+        </>
     );
 };
 

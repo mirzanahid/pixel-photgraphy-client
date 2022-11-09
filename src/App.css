@@ -1,38 +1,32 @@
 /*===============typography css start===============  */
-a,a:hover,a:focus{
+a,
+a:hover,
+a:focus {
   text-decoration: none !important;
 }
 
-.nav-items {
+/* section title */
+
+.section-title {
   font-family: Roboto;
-  font-size: 18px;
+  font-size: 32px;
   font-weight: 500;
   line-height: 20px;
-  color: #fff;
-  display: inline-block;
-  text-decoration: none;
-  margin-left: 30px;
+  color: #000;
   position: relative;
-
+  margin-bottom: 60px;
+  display: inline-block;
 }
-/* 
-.active {
-  color: #D4B0A5;
-}
-
-.active::after {
-  width: 30px;
-  height: 3px;
-  background: #D4B0A5;
+.section-title::after {
+  background: #FF8DC7;
+  height: 4px;
+  width: 50%;
   position: absolute;
-  bottom: -5px;
-  left: 0;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
   content: '';
-} */
-.nav-items:hover{
-  color: #fff;
 }
-
 .heading-2 {
   font-family: Roboto;
   font-size: 18px;
@@ -41,28 +35,71 @@ a,a:hover,a:focus{
   color: #fff;
 }
 
-.footer-bottom{
-   font-family: 'Open Sans';
-   font-size: 14px;
-   font-weight: 400;
-   color: #fff;
-}
-/*===============typography css end=================  */
-/*===============color css start=================  */
-.primary-color{
-   color: #FF8DC7;
-}
-.secondary-color{
-   color: #fff;
-}
-.thirdly-color{
-   color: #000;
+.footer-bottom {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
 }
 
-.primary-bg{
+/*===============typography css end=================  */
+/*===============color css start=================  */
+.primary-color {
+  color: #FF8DC7;
+}
+
+.secondary-color {
+  color: #fff;
+}
+
+.thirdly-color {
+  color: #000;
+}
+
+.primary-bg {
   background: #FF8DC7;
 }
+
 /*===============color css end=================  */
+/*===============buttons css start=================  */
+
+.primary-button {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #fff !important;
+  padding: 12px 18px;
+  background: #FF8DC7;
+  border: 2px solid #FF8DC7;
+  transition: .4s;
+}
+.primary-button:hover{
+  background: #fff ;
+  color: #FF8DC7 !important;
+}
+
+.secondary-button{
+  width: 100%;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #fff !important;
+  padding: 12px 18px;
+  background: #FF8DC7;
+  border: 2px solid #FF8DC7;
+  transition: .4s;
+  text-align: center;
+  display:inline-block;
+
+}
+
+.secondary-button:hover{
+  background: #fff ;
+  color: #FF8DC7 !important;
+}
+/*===============buttons css end=================  */
 
 
 

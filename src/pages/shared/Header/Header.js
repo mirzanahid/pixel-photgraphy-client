@@ -17,21 +17,26 @@ const Header = () => {
                 <Navbar.Brand> <Link to={'/'}><img className='logo' src={logo} alt="" /></Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
-                        <NavLink className="nav-items">Home</NavLink>
-                        <NavLink className="nav-items">Blog</NavLink>
+                    <Nav className="ms-auto d-flex align-items-center main-nav">
+                        <NavLink to={'/'} className={({ isActive }) => isActive ? 'active' : undefined}>Home</NavLink>
+                        <NavLink to={'/blog'} className={({ isActive }) => isActive ? 'active' : undefined}>Blog</NavLink>
                         {
                             user?.uid ?
-                                <NavLink onClick={logout} to={'/login'} className="nav-items">Log Out</NavLink>
+                                <>
+                                    <NavLink to={'/myreviews'} className={({ isActive }) => isActive ? 'active' : undefined}>My Reviews</NavLink>
+                                    <NavLink to={'/addservice'} className={({ isActive }) => isActive ? 'active' : undefined}>Add Service</NavLink>
+                                    <NavLink onClick={logout} to={'/login'} className="primary-button authentication-btn">Log Out</NavLink>
+                                </>
+
                                 :
-                                <NavLink  to={'/login'} className="nav-items">Log in</NavLink>
+                                <NavLink to={'/login'} className="primary-button authentication-btn">Log in</NavLink>
                         }
 
 
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     );
 };
 
