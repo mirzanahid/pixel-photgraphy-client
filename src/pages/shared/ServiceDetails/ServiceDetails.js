@@ -14,8 +14,9 @@ const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
     const { displayName, photoURL, email } = user;
     const Services = useLoaderData()
-    const { title, thumbnail_url, ratings, price, description } = Services
+    const { title, thumbnail_url, ratings, price, description ,_id } = Services
     const [reviews, setReviews] = useState([])
+
 
     const handlerForReviewAdd = (e) => {
         e.preventDefault();
@@ -29,7 +30,8 @@ const ServiceDetails = () => {
             reviewer_name: displayName,
             email: email,
             user_review: reviewValue,
-            post_date : date
+            post_date : date,
+            service_id : _id
 
 
         }
@@ -52,12 +54,12 @@ const ServiceDetails = () => {
 
     }
 
-
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
-    }, [])
+    }, [_id])
+
 
     return (
         <div>
@@ -100,7 +102,7 @@ const ServiceDetails = () => {
                                 {
                                     reviews.length !== 0 ?
 
-                                        reviews.map(review => <ReviewSingle key={review._id} review={review}></ReviewSingle>)
+                                        reviews.map(review => <ReviewSingle key={review._id} review={review} condition={false}></ReviewSingle>)
                                         :
 
                                         <p className='empty-message'>no data to show</p>

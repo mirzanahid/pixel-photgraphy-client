@@ -1,7 +1,7 @@
 import React from 'react';
 import './ReviewSingle.css'
 
-const ReviewSingle = ({ review }) => {
+const ReviewSingle = ({ review,condition }) => {
     const { reviewer_name, review_image, user_review, post_date } = review
 
     return (
@@ -21,6 +21,12 @@ const ReviewSingle = ({ review }) => {
                     </div>
                     <div className="review-details">
                         <p className='review-pra'>{user_review}</p>
+
+                        {
+                            condition?
+                            <button>delete</button>
+                            : null
+                        }
                     </div>
 
                 </div>

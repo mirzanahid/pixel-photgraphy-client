@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AuthProvider from '../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewSingle from '../shared/ReviewSingle/ReviewSingle';
 
-const MyReviews = ({reviewer_email}) => {
-    const {user} = useContext(AuthProvider);
+const MyReviews = () => {
+    const {user} = useContext(AuthContext);
+
     const [reviews, setReviews] = useState([])
        console.log(reviews)
     useEffect(() => {
-        fetch(`http://localhost:5000/private_reviews?email=${user.email}`)
+        fetch(`http://localhost:5000/private_reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
@@ -29,7 +30,7 @@ const MyReviews = ({reviewer_email}) => {
                         <Col lg='6'>
                             {
                                 reviews.length !== 0 ?
-                                    reviews.map(review => <ReviewSingle key={review._id} review={review}></ReviewSingle>)
+                                    reviews.map(review => <ReviewSingle key={review._id} review={review} condition={true}></ReviewSingle>)
                                     :
                                     <p className='empty-message'>no data to show</p>
                             }
