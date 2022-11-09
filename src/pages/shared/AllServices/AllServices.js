@@ -8,15 +8,15 @@ const AllServices = () => {
             <div className="page-header">
                 <h3 className='page-header-title'>All Services</h3>
             </div>
-          <div className="page-inner">
-          <Container>
-                <Row>
-                    <Col lg='4'>
-                        <SingleService></SingleService>
-                    </Col>
-                </Row>
-            </Container>
-          </div>
+            <div className="page-inner">
+                <Container>
+                    <Row>
+                        <Col lg='4'>
+                            <SingleService></SingleService>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
         </div>
     );
 };

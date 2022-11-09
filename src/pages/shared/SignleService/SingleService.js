@@ -7,10 +7,7 @@ const SingleService = () => {
     return (
         <div className='service'>
             <div className="service-image-container">
-                <PhotoView  src="https://cdn.sweetescape.com/occasion_portfolios/138/processed_prewedding-5.jpg">
-                <img className='service-image' src="https://cdn.sweetescape.com/occasion_portfolios/138/processed_prewedding-5.jpg" alt="" />
-                </PhotoView>
-                
+                    <img className='service-image' src="https://cdn.sweetescape.com/occasion_portfolios/138/processed_prewedding-5.jpg" alt="" />
             </div>
             <div className="service-inner">
                 <h3 className='service-title'>Pre Wedding</h3>

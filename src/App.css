@@ -102,7 +102,25 @@ a:focus {
   background: #fff;
   color: #FF8DC7 !important;
 }
+.white-button {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #FF8DC7 !important;
+  padding: 12px 30px;
+  background: #fff;
+  border: 2px solid #fff;
+  transition: .4s;
+  text-align: center;
+  display: inline-block;
 
+}
+
+.white-button:hover {
+  background: #FF8DC7;
+  color: #fff !important;
+}
 /*===============buttons css end=================  */
 /*==============page header css start=================  */
 .page-header {
