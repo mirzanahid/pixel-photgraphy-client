@@ -1,0 +1,6 @@
+.login{
+    background: url('../../../assets/signup-bg.jpg') no-repeat center;
+    background-size: cover;
+    position: relative;
+    height: 800px;
+}

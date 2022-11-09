@@ -8,7 +8,7 @@ a,a:hover,a:focus{
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  color: #323232;
+  color: #fff;
   display: inline-block;
   text-decoration: none;
   margin-left: 30px;
@@ -29,23 +29,40 @@ a,a:hover,a:focus{
   left: 0;
   content: '';
 } */
-
+.nav-items:hover{
+  color: #fff;
+}
 
 .heading-2 {
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  color: #323232;
+  color: #fff;
 }
 
 .footer-bottom{
    font-family: 'Open Sans';
    font-size: 14px;
    font-weight: 400;
-   color: #939580;
+   color: #fff;
 }
 /*===============typography css end=================  */
+/*===============color css start=================  */
+.primary-color{
+   color: #FF8DC7;
+}
+.secondary-color{
+   color: #fff;
+}
+.thirdly-color{
+   color: #000;
+}
+
+.primary-bg{
+  background: #FF8DC7;
+}
+/*===============color css end=================  */
 
 
 

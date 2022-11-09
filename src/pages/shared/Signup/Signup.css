@@ -1,0 +1,122 @@
+.signup {
+    background: url('../../../assets/signup-bg.jpg') no-repeat center;
+    background-size: cover;
+    position: relative;
+    height: 1000px;
+ 
+}
+.overlay{
+    background: rgba(0, 0, 0,0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 60px 0;
+    display: flex;
+    align-items: center;
+}
+.signup-heading{
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 32px;
+    color: #000;
+
+}
+.signup-login-form form {
+    background: #fff;
+    padding: 35px 35px;
+    width: 550px;
+}
+
+.signup-login-form label {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000;
+}
+
+.signup-login-form input {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #000;
+    height: 50px;
+    border-radius: 0;
+}
+
+.signup-login-form .check-input {
+    display: flex;
+    align-items: center;
+}
+
+.signup-login-form .check-input input {
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+    margin-top: 0;
+}
+
+.signup-login-form .check-input label {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #000;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px 0 !important;
+    font-family: Roboto !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 30px !important;
+    color: #fff !important;
+    background: #FF8DC7 !important;
+    border: 1px solid #FF8DC7 !important;
+    border-radius: 0 !important;
+
+}
+
+.or {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 15px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.google-icon {
+    width: 30px;
+}
+
+.social-signup {
+    width: 100%;
+    padding: 12px;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000;
+    background: #fff;
+    border: 2px solid #f1f1f1;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 0;
+}
+
+.error-text{
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    color: red;
+    margin-top: 5px;
+}

@@ -1,4 +1,10 @@
 .navbar{
-    background: #fff;
+    background: #FF8DC7;
+    /* background: #FFACC7; */
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}
+
+.logo{
+    height: 50px;
 }

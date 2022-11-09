@@ -1,6 +1,6 @@
 .footer{
     text-align: center;
-    background: rgba(212, 176, 165, 0.1);
+    background: #FF8DC7;
     padding: 80px 0;
 }
 .links{
@@ -21,7 +21,7 @@
 }
 .social ul li a{
     font-size: 22px;
-    color: #939580;
+    color: #FF8DC7;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -33,5 +33,6 @@
 }
 
 .social ul li a:hover{
-    color: #c79889;
+    color: #fff;
+    background: #FFACC7;
 }
