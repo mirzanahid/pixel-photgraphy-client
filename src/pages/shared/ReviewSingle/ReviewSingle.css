@@ -1,0 +1,47 @@
+.review {
+    display: flex;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    
+}
+
+.profile .profile-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.review-text {
+    margin-left: 30px;
+    padding: 10px;
+    width: 500px;
+}
+
+.review-text-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.review-text-header .name h3 {
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000;
+}
+
+.review-text-header .date .review-date {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #777;
+}
+
+.review-details .review-pra {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #000;
+}

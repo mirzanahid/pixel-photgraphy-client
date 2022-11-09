@@ -17,6 +17,7 @@ a:focus {
   margin-bottom: 60px;
   display: inline-block;
 }
+
 .section-title::after {
   background: #FF8DC7;
   height: 4px;
@@ -27,6 +28,7 @@ a:focus {
   transform: translateX(-50%);
   content: '';
 }
+
 .heading-2 {
   font-family: Roboto;
   font-size: 18px;
@@ -74,12 +76,13 @@ a:focus {
   border: 2px solid #FF8DC7;
   transition: .4s;
 }
-.primary-button:hover{
-  background: #fff ;
+
+.primary-button:hover {
+  background: #fff;
   color: #FF8DC7 !important;
 }
 
-.secondary-button{
+.secondary-button {
   width: 100%;
   font-family: Roboto;
   font-size: 18px;
@@ -91,23 +94,84 @@ a:focus {
   border: 2px solid #FF8DC7;
   transition: .4s;
   text-align: center;
-  display:inline-block;
+  display: inline-block;
 
 }
 
-.secondary-button:hover{
-  background: #fff ;
+.secondary-button:hover {
+  background: #fff;
   color: #FF8DC7 !important;
 }
+
 /*===============buttons css end=================  */
+/*==============page header css start=================  */
+.page-header {
+  background: #FFB9B9;
+  text-align: center;
+  padding: 80px;
 
 
+}
 
+.page-header-title {
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #fff;
+}
 
-/* 
-main heading: #939580;
-heading : #323232 ;
-button : c79889;
-light button : #D4B0A5 ;
-paragraph: #848892;
-*/
+.page-inner {
+  padding: 80px 0;
+}
+
+/*==============page header css end=================  */
+/*==============form  css start=================  */
+ form {
+  background: #fff;
+  padding: 35px 35px;
+  width: 550px;
+  border: 1px solid #FF8DC7;
+}
+ label {
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #000;
+}
+ input {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 30px;
+  color: #000;
+  height: 50px;
+  border-radius: 0;
+}
+
+.form-btn {
+  width: 100%;
+  padding: 10px 0 !important;
+  font-family: Roboto !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 30px !important;
+  color: #fff !important;
+  background: #FF8DC7 !important;
+  border: 1px solid #FF8DC7 !important;
+  border-radius: 0 !important;
+
+}
+.form-heading{
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 32px;
+  color: #000;
+
+}
+
+/*==============form  css end=================  */

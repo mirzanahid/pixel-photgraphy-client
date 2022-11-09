@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import SingleService from '../SignleService/SingleService';
 import './services.css'
 
@@ -15,6 +16,9 @@ const Services = () => {
                  <SingleService></SingleService>
                 </Col>
              </Row>
+          <div className="service-footer text-center">
+          <Link to={'/allService'} className='primary-button'>See More</Link>
+          </div>
         </Container>
     </div>
     );
