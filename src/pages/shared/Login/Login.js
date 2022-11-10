@@ -24,7 +24,6 @@ const Login = () => {
     // location state
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
-
   //login with email and password
   const loginHandler = (e) => {
     e.preventDefault();

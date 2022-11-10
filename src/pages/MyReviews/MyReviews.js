@@ -5,16 +5,14 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ReviewSingle from '../shared/ReviewSingle/ReviewSingle';
 
 const MyReviews = () => {
-    const {user} = useContext(AuthContext);
-
+    const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
-       console.log(reviews)
+
     useEffect(() => {
         fetch(`http://localhost:5000/private_reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [user?.email])
-
     return (
         <div>
             <div className="page-header">
@@ -30,7 +28,7 @@ const MyReviews = () => {
                         <Col lg='6'>
                             {
                                 reviews.length !== 0 ?
-                                    reviews.map(review => <ReviewSingle key={review._id} review={review} condition={true}></ReviewSingle>)
+                                    reviews.map(review => <ReviewSingle key={review._id} review={review} setReviews={setReviews} reviews={reviews} condition={true}></ReviewSingle>)
                                     :
                                     <p className='empty-message'>no data to show</p>
                             }

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import './ServiceDetails.css';
 import { FaStar } from "react-icons/fa";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
@@ -17,6 +17,7 @@ const ServiceDetails = () => {
     const [reviews, setReviews] = useState([])
     const [reviewLogin, setReviewLogin] = useState(false)
     const [emptyReview, setEmptyReview] = useState(false)
+    const location = useLocation();
 
     console.log(user?.email)
     const handlerForReviewAdd = (e) => {
@@ -31,7 +32,7 @@ const ServiceDetails = () => {
             reviewer_name: user?.displayName,
             email: user?.email,
             user_review: reviewValue,
-            title:title,
+            title: title,
             post_date: date,
             service_id: _id
 
@@ -53,24 +54,21 @@ const ServiceDetails = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        setReviews((oldData) => [...oldData, review]);
                         if (data.acknowledged) {
                             alert('Review added successfully')
+
                             form.reset();
                         }
+
                     })
                     .catch(error => console.error(error));
                 setEmptyReview(false)
             }
-
         }
         else {
             setReviewLogin(true)
         }
-
-
-
-
     }
 
     useEffect(() => {
@@ -141,7 +139,7 @@ const ServiceDetails = () => {
                                 </FloatingLabel>
                                 {
                                     reviewLogin ?
-                                        <p className='error-text details-error'>Please Login to add review <Link to={'/login'}>Login</Link> </p>
+                                        <p className='error-text details-error'>Please Login to add review <Link state={{ from: location }} replace to={'/login'}>Login</Link> </p>
                                         :
                                         null
                                 }
@@ -151,8 +149,6 @@ const ServiceDetails = () => {
                                         :
                                         null
                                 }
-
-
                                 <button className='primary-button add-review-btn' type="submit">
                                     Add Review
                                 </button>
