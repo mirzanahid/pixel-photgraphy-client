@@ -1,7 +1,7 @@
 .review {
     display: flex;
 
-    
+
 
 }
 
@@ -49,9 +49,24 @@
     color: #000;
 }
 
-.divider2{
+.divider2 {
     margin-top: 20px;
     background: #f1f1f1;
     height: 2px;
     margin-bottom: 20px;
+}
+
+.review-details-service-name {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #777;
+}
+
+.edite-delte-btn {
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    color: #000;
 }

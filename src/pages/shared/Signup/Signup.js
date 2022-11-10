@@ -1,3 +1,4 @@
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
@@ -5,9 +6,13 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import google from '../../../assets/google.png'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import app from '../../../firebase/firebase.config';
 import useTitle from '../../../hooks/useTitle';
 import './Signup.css';
 
+const auth = getAuth(app)
+// google provider
+const provider = new GoogleAuthProvider();
 const Signup = () => {
     const { createUser, updateUserProfile, user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -15,6 +20,7 @@ const Signup = () => {
     const [error, setError] = useState()
     const [emailError, setEmailError] = useState()
     const [passwordError, setPasswordError] = useState()
+    const [checked, setChecked] = useState(false);
 
     useTitle('SignUp');
     //  login with email and password
@@ -27,7 +33,6 @@ const Signup = () => {
         const image = form.image.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-
 
         // form authentication 
         if (!name && !email && !password && !image) {
@@ -42,17 +47,14 @@ const Signup = () => {
             return
         }
 
-
         // create new user using email and password
         createUser(email, password)
             .then(result => {
                 navigate('/')
                 handlerForUpdateNameAndPhoto(name, image)
                 form.reset()
-
             })
             .catch(error => { console.error(error) })
-
     }
     // update image and photo
 
@@ -69,8 +71,22 @@ const Signup = () => {
                 console.error('error', error)
             })
     }
+    // checking checked box status
+    const checkedHandler = (e) => {
+        setChecked(e.target.checked)
+    }
 
+    //log in with google 
+    const handlerForGoogleSignin = () => {
+        signInWithPopup(auth, provider)
+            .then(result => {
+                navigate('/')
+            })
+            .catch(error => {
+                console.error('error', error)
+            })
 
+    }
 
     return (
         <div className='signup'>
@@ -108,21 +124,21 @@ const Signup = () => {
                                         <p className='error-text'>{passwordError}</p>
                                     </Form.Group>
                                     <Form.Group className="mb-3 check-input" controlId="formBasicCheckbox">
-                                        <Form.Check type="checkbox" />
+                                        <Form.Check type="checkbox" onClick={checkedHandler} />
                                         <Form.Label>I agree to the <Link>Terms of Service</Link> and <Link>Privacy Policy</Link></Form.Label>
                                     </Form.Group>
-                                    <Button className='submit-btn' type="submit">
+                                    <Button className='submit-btn' type="submit" disabled={!checked}>
                                         Sign up
                                     </Button>
                                     <p className='or'>Or</p>
-                                    <div className="button-group">
-                                        <button className='social-signup'><img className='google-icon' src={google} alt="" /> Continue with Google</button>
-                                    </div>
-                                    <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
                                 </Form>
+                                <div className="button-group">
+                                    <button onClick={handlerForGoogleSignin} className='social-signup'><img className='google-icon' src={google} alt="" /> Continue with Google</button>
+                                </div>
+                                <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
                             </div>
                         </Col>
-                        <Col lg='6'>a</Col>
+                        <Col lg='6'></Col>
                     </Row>
                 </Container>
             </div>

@@ -1,8 +1,18 @@
 import React from 'react';
-import './ReviewSingle.css'
+import './ReviewSingle.css';
+import { FaTrash, FaEdit } from "react-icons/fa";
 
-const ReviewSingle = ({ review,condition }) => {
-    const { reviewer_name, review_image, user_review, post_date } = review
+const ReviewSingle = ({ review, condition }) => {
+    const { reviewer_name, review_image, user_review, post_date, title } = review
+
+
+    const handlerForEditReview = (e) => {
+        e.preventDefault()
+    }
+    // const handlerForDeleteReview=(e)>{
+
+    // }
+
 
     return (
         <div>
@@ -21,11 +31,14 @@ const ReviewSingle = ({ review,condition }) => {
                     </div>
                     <div className="review-details">
                         <p className='review-pra'>{user_review}</p>
-
+                        <p className='review-details-service-name'>Service Name: {title}</p>
                         {
-                            condition?
-                            <button>delete</button>
-                            : null
+                            condition ?
+                                <>
+                                    <button onClick={handlerForEditReview} className='edite-delte-btn'><FaEdit /></button>
+                                    <button className='edite-delte-btn'><FaTrash /></button>
+                                </>
+                                : null
                         }
                     </div>
 

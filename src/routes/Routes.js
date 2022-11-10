@@ -10,6 +10,7 @@ import AllServices from '../pages/shared/AllServices/AllServices';
 import Login from '../pages/shared/Login/Login';
 import ServiceDetails from '../pages/shared/ServiceDetails/ServiceDetails';
 import Signup from '../pages/shared/Signup/Signup';
+import PrivateRoute from './PrivateRoute';
 
 
 export const router = createBrowserRouter([
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myreviews',
-                element: <MyReviews></MyReviews>
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             },
             {
                 path: '/allServices',
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
                 path: '/blog',
                 element: <Blog></Blog>
             }
-           
+
         ]
     },
 

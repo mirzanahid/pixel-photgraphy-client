@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import './ServiceDetails.css';
 import { FaStar } from "react-icons/fa";
@@ -12,12 +12,13 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
-    const { displayName, photoURL, email } = user;
     const Services = useLoaderData()
-    const { title, thumbnail_url, ratings, price, description ,_id } = Services
+    const { title, thumbnail_url, ratings, price, description, _id } = Services
     const [reviews, setReviews] = useState([])
+    const [reviewLogin, setReviewLogin] = useState(false)
+    const [emptyReview, setEmptyReview] = useState(false)
 
-
+    console.log(user?.email)
     const handlerForReviewAdd = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -26,31 +27,49 @@ const ServiceDetails = () => {
 
 
         const review = {
-            review_image: photoURL,
-            reviewer_name: displayName,
-            email: email,
+            review_image: user?.photoURL,
+            reviewer_name: user?.displayName,
+            email: user?.email,
             user_review: reviewValue,
-            post_date : date,
-            service_id : _id
+            title:title,
+            post_date: date,
+            service_id: _id
 
 
         }
-        fetch('http://localhost:5000/review', {
-            method: 'POST',
-            headers: {
-                'content-type': "application/json"
-            },
-            body: JSON.stringify(review)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if (data.acknowledged) {
-                    alert('Review added successfully')
-                    form.reset();
-                }
-            })
-            .catch(error => console.error(error));
+
+
+        if (user?.email) {
+            if (reviewValue === '') {
+                setEmptyReview(true)
+            }
+            else {
+                fetch('http://localhost:5000/review', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': "application/json"
+                    },
+                    body: JSON.stringify(review)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.acknowledged) {
+                            alert('Review added successfully')
+                            form.reset();
+                        }
+                    })
+                    .catch(error => console.error(error));
+                setEmptyReview(false)
+            }
+
+        }
+        else {
+            setReviewLogin(true)
+        }
+
+
+
 
     }
 
@@ -98,19 +117,14 @@ const ServiceDetails = () => {
                         <div className="service_reviews">
                             <h3 className='service-details-review-heading'>Service Reviews</h3>
                             <div className="service-details-reviews">
-
                                 {
                                     reviews.length !== 0 ?
-
                                         reviews.map(review => <ReviewSingle key={review._id} review={review} condition={false}></ReviewSingle>)
                                         :
-
                                         <p className='empty-message'>no data to show</p>
                                 }
-
                             </div>
                         </div>
-
                     </Col>
                 </Row>
                 <Row className='d-flex justify-content-center'>
@@ -125,16 +139,31 @@ const ServiceDetails = () => {
                                         name="review"
                                     />
                                 </FloatingLabel>
+                                {
+                                    reviewLogin ?
+                                        <p className='error-text details-error'>Please Login to add review <Link to={'/login'}>Login</Link> </p>
+                                        :
+                                        null
+                                }
+                                {
+                                    emptyReview ?
+                                        <p className='error-text details-error'>Please write something in the review box </p>
+                                        :
+                                        null
+                                }
+
+
                                 <button className='primary-button add-review-btn' type="submit">
                                     Add Review
                                 </button>
                             </form>
                         </div>
+
                     </Col>
                 </Row>
             </Container>
 
-        </div>
+        </div >
     );
 };
 

@@ -161,7 +161,7 @@ a:focus {
 
 /*==============page header css end=================  */
 /*==============form  css start=================  */
-form {
+.custom form {
   background: #fff;
   padding: 35px 35px;
   width: 550px;
