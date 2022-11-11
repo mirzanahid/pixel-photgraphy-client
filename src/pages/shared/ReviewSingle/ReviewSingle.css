@@ -1,5 +1,8 @@
-.review {
+.review {}
+
+.profile {
     display: flex;
+    align-items: center;
 }
 
 .profile .profile-image {
@@ -17,8 +20,7 @@
 }
 
 .review-text-header {
-    display: flex;
-    justify-content: space-between;
+    margin-left: 20px;
 }
 
 .review-text-header .name h3 {
@@ -36,6 +38,7 @@
     font-weight: 500;
     line-height: 20px;
     color: #777;
+    margin-bottom: 0;
 }
 
 .review-details .review-pra {
@@ -44,6 +47,7 @@
     font-weight: 500;
     line-height: 20px;
     color: #000;
+    margin-left: 50px;
 }
 
 .divider2 {
@@ -68,10 +72,31 @@
     color: #000;
 }
 
-.modal-title{
+.modal-title {
     font-family: Roboto;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
     color: #000;
+}
+
+/* responsive start */
+@media only screen and (max-width: 599.98px) {
+    .review-text-header {
+        flex-direction: column;
+    }
+
+    .review-text-header .date .review-date {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .review-text {
+        margin-left: 0;
+        width: auto;
+    }
+    .review-details .review-pra {
+        margin-left: 0;
+        margin-top: 15px;
+    }
 }

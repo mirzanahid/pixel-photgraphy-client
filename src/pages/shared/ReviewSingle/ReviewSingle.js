@@ -71,8 +71,6 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
             <div className="review">
                 <div className="profile">
                     <img className='profile-image' src={review_image} alt="" />
-                </div>
-                <div className="review-text">
                     <div className="review-text-header">
                         <div className="name">
                             <h3>{reviewer_name}</h3>
@@ -81,6 +79,8 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                             <p className='review-date'>Posted On: <span>{post_date}</span></p>
                         </div>
                     </div>
+                </div>
+                <div className="review-text">
                     <div className="review-details">
                         <p className='review-pra'>{user_review}</p>
                         {
