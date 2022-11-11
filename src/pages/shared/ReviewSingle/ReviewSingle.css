@@ -63,6 +63,11 @@
     font-weight: 500;
     line-height: 20px;
     color: #777;
+    margin-left: 50px;
+}
+
+.reviewSingle-btns {
+    margin-left: 50px;
 }
 
 .edite-delte-btn {
@@ -70,6 +75,8 @@
     background: transparent;
     border: none;
     color: #000;
+    margin-right: 10px;
+
 }
 
 .modal-title {
@@ -95,8 +102,16 @@
         margin-left: 0;
         width: auto;
     }
+
     .review-details .review-pra {
         margin-left: 0;
         margin-top: 15px;
+    }
+    .review-details-service-name {
+
+        margin-left: 0;
+    }
+    .reviewSingle-btns {
+        margin-left: 0;
     }
 }

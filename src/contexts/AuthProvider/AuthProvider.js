@@ -15,10 +15,6 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState({})
     const [load, setLoad] = useState(true)
 
-
-
-
-
     //  login with email and password
     const createUser = (email, password) => {
         setLoad(false)

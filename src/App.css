@@ -1,3 +1,7 @@
+.App {
+  padding-top: 62px;
+}
+
 /*===============typography css start===============  */
 a,
 a:hover,
@@ -327,5 +331,10 @@ a:focus {
 
   .page-header {
     padding: 60px 20px;
+  }
+
+  .loader {
+    top: 20%;
+
   }
 }

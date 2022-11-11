@@ -29,9 +29,11 @@
 .links a {
     margin-left: 30px;
 }
-.links a:hover{
+
+.links a:hover {
     color: #fff;
 }
+
 .social {
     margin-top: 30px;
     margin-bottom: 40px;
@@ -62,4 +64,21 @@
 .social ul li a:hover {
     color: #fff;
     background: #FFACC7;
+}
+
+
+@media only screen and (max-width: 575.98px) {
+    .links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .links a {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    .footer{
+        height: 450px;
+    }
 }

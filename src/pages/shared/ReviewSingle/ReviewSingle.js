@@ -87,8 +87,10 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                             condition ?
                                 <>
                                     <p className='review-details-service-name'>Service Name: {title}</p>
-                                    <button onClick={handleShow} className='edite-delte-btn'><FaEdit /></button>
-                                    <button onClick={handlerForDeleteReview} className='edite-delte-btn'><FaTrash /></button>
+                                    <div className="reviewSingle-btns">
+                                        <button onClick={handleShow} className='edite-delte-btn'><FaEdit /></button>
+                                        <button onClick={handlerForDeleteReview} className='edite-delte-btn'><FaTrash /></button>
+                                    </div>
                                 </>
                                 : null
                         }

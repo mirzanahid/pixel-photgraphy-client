@@ -101,3 +101,21 @@
     font-size: 16px !important;
     margin-top: 30px !important;
 }
+
+
+
+/* responsive start */
+@media only screen and (max-width: 599.98px) {
+    .service-de-title {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .service-de-header {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        flex-flow: column;
+        margin-bottom: 20px;
+    }
+}
