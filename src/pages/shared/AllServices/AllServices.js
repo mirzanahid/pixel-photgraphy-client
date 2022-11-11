@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, {  useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import SingleService from '../SignleService/SingleService';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { Link } from 'react-router-dom';
 
+
 const AllServices = () => {
+   
     const [services, setServices] = useState([])
+
     useEffect(() => {
         fetch('http://localhost:5000/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setServices(data)
+            })
     }, [])
     return (
         <div>
             <div className="page-header">
                 <h3 className='page-header-title'>All Services</h3>
                 <Breadcrumb className='bread'>
-                    <Breadcrumb.Item><Link to={'/'}>Home</Link></Breadcrumb.Item>
-                    <Breadcrumb.Item active>Service Details</Breadcrumb.Item>
+                    <li className='breadcrumb-item'>
+                        <Link to={'/'}>Home</Link></li>
+                    <Breadcrumb.Item active>Add Services</Breadcrumb.Item>
                 </Breadcrumb>
-
             </div>
             <div className="page-inner">
                 <Container>

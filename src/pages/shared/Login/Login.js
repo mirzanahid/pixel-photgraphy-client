@@ -15,15 +15,14 @@ const auth = getAuth(app)
 const provider = new GoogleAuthProvider();
 
 const Login = () => {
-  useTitle('Login')
-  const { user, login, load } = useContext(AuthContext);
+  const { user, login } = useContext(AuthContext);
   const navigate = useNavigate()
-
   const [logInError, setLogInError] = useState(null);
 
-    // location state
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/'
+  // location state
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/'
+  useTitle('Login')
   //login with email and password
   const loginHandler = (e) => {
     e.preventDefault();
@@ -34,6 +33,23 @@ const Login = () => {
     // login with email  and password
     login(email, password)
       .then(result => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email
+        }
+        //  get jwt token
+        fetch(`http://localhost:5000/jwt`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+
+        })
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('token', data.token)
+          })
         navigate(from, { replace: true })
         form.email.reset()
         form.password.reset()

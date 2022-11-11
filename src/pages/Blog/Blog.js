@@ -2,15 +2,19 @@ import React from 'react';
 import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import './Blog.css'
 
 const Blog = () => {
+
+    useTitle('Blog')
     return (
         <div>
             <div className="page-header">
                 <h3 className='page-header-title'>Blog</h3>
                 <Breadcrumb className='bread'>
-                    <Breadcrumb.Item><Link to={'/'}>Home</Link></Breadcrumb.Item>
+                    <li className='breadcrumb-item'>
+                        <Link to={'/'}>Home</Link></li>
                     <Breadcrumb.Item active>Blog</Breadcrumb.Item>
                 </Breadcrumb>
             </div>

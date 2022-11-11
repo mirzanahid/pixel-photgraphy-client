@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Breadcrumb, Col, Container, FloatingLabel, Row } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
-
+    useTitle('Add Service')
+    const [error, setError] = useState()
     const handlerForAddService = (event) => {
         event.preventDefault()
         const form = event.target;
@@ -14,31 +15,41 @@ const AddService = () => {
         const rating = form.rating.value;
         const price = form.price.value;
         const description = form.description.value;
-
         const addService = {
-
             title: title,
-            thumbnail_url: image_url, 
+            thumbnail_url: image_url,
             ratings: rating,
             price: price,
-            description :description
+            description: description
         }
-       fetch('http://localhost:5000/addService',{
-        method: 'POST',
-        headers: {
-            'content-type': "application/json"
-        },
-        body:JSON.stringify(addService)
-       })
-       .then(res=>res.json())
-       .then(data =>{
-        console.log(data)
-        if(data.acknowledged){
-            alert('Service added successfully')
-            form.reset();
+
+        if (!title && !image_url && !rating && !price && !description) {
+            setError('This field can not be empty')
         }
-       })
-       .catch(error => console.error(error));
+
+        else {
+            fetch('http://localhost:5000/addService', {
+                method: 'POST',
+                headers: {
+                    'content-type': "application/json"
+                },
+                body: JSON.stringify(addService)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.acknowledged) {
+                        alert('Service added successfully')
+                        form.reset();
+                    }
+                })
+                .catch(error => console.error(error));
+
+
+        }
+
+
+
 
 
     }
@@ -47,14 +58,14 @@ const AddService = () => {
             <div className="page-header">
                 <h3 className='page-header-title'>Add Services</h3>
                 <Breadcrumb className='bread'>
-                    <Breadcrumb.Item><Link to={'/home'}>Home</Link></Breadcrumb.Item>
-                    <Breadcrumb.Item >
-                        <Link to={'/allServices'}>All Services</Link>
-                    </Breadcrumb.Item>
+                    <li className='breadcrumb-item'>
+                        <Link to={'/'}>Home</Link></li>
+                    <li className='breadcrumb-item'>
+                        <Link to={'/allServices'}>All Services</Link></li>
                     <Breadcrumb.Item active>Add Services</Breadcrumb.Item>
                 </Breadcrumb>
             </div>
-            <div className="page-inner">
+            <div className="page-inner custom">
                 <Container>
                     <Row className='d-flex justify-content-center'>
                         <Col lg="6">
@@ -63,27 +74,34 @@ const AddService = () => {
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Title</Form.Label>
                                     <Form.Control type="text" placeholder="Service Title" name="title" />
+                                    <p className='error-text'>{error}</p>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword" >
                                     <Form.Label>Image</Form.Label>
                                     <Form.Control type="text" placeholder="Image Url" name='image_url' />
+                                    <p className='error-text'>{error}</p>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.Label>Rating</Form.Label>
                                     <Form.Control type="text" placeholder="Service Rating" name='rating' />
+                                    <p className='error-text'>{error}</p>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
                                     <Form.Label>Price</Form.Label>
                                     <Form.Control type="text" placeholder="Service Price" name='price' />
+                                    <p className='error-text'>{error}</p>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Price</Form.Label>
+                                    <p className='error-text'>{error}</p>
+                                    <Form.Label>Description</Form.Label>
                                     <Form.Control
                                         as="textarea"
-                                        placeholder="Leave a comment here"
+                                        placeholder="Service Description"
                                         style={{ height: '100px' }}
                                         name='description'
                                     />
+                                    
+                                    <p className='error-text'>{error}</p>
                                 </Form.Group>
 
 

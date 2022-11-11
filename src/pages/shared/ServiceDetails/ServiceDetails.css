@@ -48,23 +48,24 @@
     align-items: center;
 }
 
-.service-de-ratings svg{
+.service-de-ratings svg {
     font-size: 20px;
     color: gold;
     margin-left: 5px;
 }
 
-.divider{
+.divider {
     margin-top: 30px;
     background: #f1f1f1;
     height: 2px;
     margin-bottom: 30px;
 }
-.service-de-inner{
+
+.service-de-inner {
     padding: 20px;
 }
 
-.service-details-review-heading{
+.service-details-review-heading {
     font-family: Roboto;
     font-size: 24px;
     font-weight: 500;
@@ -72,28 +73,31 @@
     color: #000;
     margin-bottom: 50px;
 }
-.service_reviews{
+
+.service_reviews {
     padding: 20px;
 }
-.add-review-form{
-    width: 100%;
+
+.add-review-form {
+    width: 100% !important;
     padding: 20px;
-    
+
 }
-.add-review-text{
+
+.add-review-text {
     width: 100% !important;
     height: 150px !important;
 }
 
-.add-review-btn{
+.add-review-btn {
     margin-top: 30px;
     padding: 15px 100px;
     margin: 20px auto;
-   margin-left: 50%;
-   transform: translateX(-50%);
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 
-.details-error{
+.details-error {
     font-size: 16px !important;
     margin-top: 30px !important;
 }

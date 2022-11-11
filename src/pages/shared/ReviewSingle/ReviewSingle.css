@@ -1,8 +1,5 @@
 .review {
     display: flex;
-
-
-
 }
 
 .profile .profile-image {
@@ -68,5 +65,13 @@
     font-size: 18px;
     background: transparent;
     border: none;
+    color: #000;
+}
+
+.modal-title{
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
     color: #000;
 }

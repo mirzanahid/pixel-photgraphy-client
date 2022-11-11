@@ -19,15 +19,15 @@ const Header = () => {
                         <NavLink to={'/'} className={({ isActive }) => isActive ? 'active' : undefined}>Home</NavLink>
                         <NavLink to={'/blog'} className={({ isActive }) => isActive ? 'active' : undefined}>Blog</NavLink>
                         {
-                            user?.uid ?
+                            user?.email ?
                                 <>
                                     <NavLink to={'/myreviews'} className={({ isActive }) => isActive ? 'active' : undefined}>My Reviews</NavLink>
                                     <NavLink to={'/addservice'} className={({ isActive }) => isActive ? 'active' : undefined}>Add Service</NavLink>
-                                    <NavLink onClick={logout} to={'/login'} className="primary-button authentication-btn">Log Out</NavLink>
+                                    <Link onClick={logout} to={'/login'} className="primary-button authentication-btn">Log Out</Link>
                                 </>
 
                                 :
-                                <NavLink to={'/login'} className="primary-button authentication-btn">Log in</NavLink>
+                                <Link to={'/login'} className="primary-button authentication-btn">Log in</Link>
                         }
 
 

@@ -9,8 +9,8 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
     const { reviewer_name, review_image, user_review, post_date, title, _id } = review
     const [show, setShow] = useState(false);
 
-
     const handlerForDeleteReview = (e) => {
+
         e.preventDefault();
         const sure = window.confirm('Are you sure you want to delete this review')
         if (sure) {
@@ -19,11 +19,10 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    if (data.deletedCount > 0) {
-                        alert('Review Delete Successfully');
-                        const remainingReviews = reviews.filter(rev => rev._id !== _id)
-                        setReviews(remainingReviews)
-                    }
+                    alert('Review Delete Successfully');
+                    const remainingReviews = reviews.filter(rev => rev._id !== _id)
+                    setReviews(remainingReviews)
+
                 }
                 )
         }
@@ -37,36 +36,28 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
         e.preventDefault();
         const form = e.target;
         const updateReviewValue = form.updateReview.value;
-
-
-        fetch('http://localhost:5000/review', {
+        fetch(`http://localhost:5000/updatereviews/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': "application/json"
             },
             body: JSON.stringify(updateReviewValue)
         })
+
             .then(res => res.json())
-            .then(data => {
-                // setReviews((oldData) => [...oldData, review]);
-                // if (data.acknowledged) {
-                //     alert('Review added successfully')
-
-                //     form.reset();
-                // }
-                console.log(data)
-
-            })
+            .then(data => console.log(data))
             .catch(error => console.error(error));
-
     }
 
 
 
 
+    // setReviews((oldData) => [...oldData, review]);
+    // if (data.acknowledged) {
+    //     alert('Review added successfully')
 
-
-
+    //     form.reset();
+    // }
 
 
 
@@ -92,7 +83,6 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                     </div>
                     <div className="review-details">
                         <p className='review-pra'>{user_review}</p>
-
                         {
                             condition ?
                                 <>
@@ -103,15 +93,11 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                                 : null
                         }
                     </div>
-
                 </div>
-
             </div>
             <div className="divider2"></div>
-            <>
-
-
-                <Modal show={show} onHide={handleClose}>
+            <Modal className='custom' show={show} onHide={handleClose}>
+                <form onSubmit={handlerForEditReview}>
                     <Modal.Header closeButton>
                         <Modal.Title>Update Review</Modal.Title>
                     </Modal.Header>
@@ -129,12 +115,12 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={handlerForEditReview}>
+                        <Button variant="primary" type='submit'>
                             Update
                         </Button>
                     </Modal.Footer>
-                </Modal>
-            </>
+                </form>
+            </Modal>
         </div>
     );
 };

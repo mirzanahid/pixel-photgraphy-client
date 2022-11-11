@@ -8,9 +8,11 @@ import ReviewSingle from '../ReviewSingle/ReviewSingle';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 
 const ServiceDetails = () => {
+    useTitle('Service Details')
     const { user } = useContext(AuthContext);
     const Services = useLoaderData()
     const { title, thumbnail_url, ratings, price, description, _id } = Services
@@ -35,10 +37,7 @@ const ServiceDetails = () => {
             title: title,
             post_date: date,
             service_id: _id
-
-
         }
-
 
         if (user?.email) {
             if (reviewValue === '') {
@@ -74,7 +73,9 @@ const ServiceDetails = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
-            .then(data => setReviews(data))
+            .then(data => {
+                setReviews(data)
+            })
     }, [_id])
 
 
@@ -83,10 +84,11 @@ const ServiceDetails = () => {
             <div className="page-header">
                 <h3 className='page-header-title'>Service Details</h3>
                 <Breadcrumb className='bread'>
-                    <div className='breadcrumb-item'><Link to={'/'}>Home</Link></div>
-                    <div className='breadcrumb-item' >
+                    <li className='breadcrumb-item'>
+                        <Link to={'/'}>Home</Link></li>
+                    <li className='breadcrumb-item' >
                         <Link to={'/allServices'}>All Services</Link>
-                    </div>
+                    </li>
                     <Breadcrumb.Item active>Service Details</Breadcrumb.Item>
                 </Breadcrumb>
             </div>
@@ -117,7 +119,7 @@ const ServiceDetails = () => {
                             <div className="service-details-reviews">
                                 {
                                     reviews.length !== 0 ?
-                                        reviews.map(review => <ReviewSingle key={review._id} review={review} condition={false}></ReviewSingle>)
+                                        reviews.map((review, idk) => <ReviewSingle key={idk} review={review} condition={false}></ReviewSingle>)
                                         :
                                         <p className='empty-message'>no data to show</p>
                                 }
@@ -127,7 +129,7 @@ const ServiceDetails = () => {
                 </Row>
                 <Row className='d-flex justify-content-center'>
                     <Col lg='8'>
-                        <div className="add-review">
+                        <div className="add-review custom">
                             <form onSubmit={handlerForReviewAdd} className='border-0 add-review-form'>
                                 <FloatingLabel controlId="floatingTextarea2" label="Add your Review">
                                     <Form.Control
