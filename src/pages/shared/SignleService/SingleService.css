@@ -1,11 +1,13 @@
 .service {
 
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  
+
 }
-.service-inner{
+
+.service-inner {
     padding: 25px 30px;
 }
+
 .service-image {
     width: 100%;
 }
@@ -25,7 +27,8 @@
     line-height: 20px;
     color: #777;
 }
-.ratings{
+
+.ratings {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 400;
@@ -34,7 +37,8 @@
     display: flex;
     align-items: center;
 }
-.ratings span{
+
+.ratings span {
     font-family: Roboto;
     font-size: 16px;
     font-weight: 500;
@@ -42,13 +46,14 @@
     color: #000;
     margin-left: 5px;
 }
-.ratings svg{
+
+.ratings svg {
     font-size: 18px;
     color: gold;
     margin-left: 5px;
 }
 
-.service-price{
+.service-price {
     font-family: Roboto;
     font-size: 24px;
     font-weight: 600;
@@ -57,8 +62,8 @@
     margin: 25px 0;
 }
 
-/* .service-btn{
-    position: absolute;
-    bottom: 20px ;
-    left: 0;
-} */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+    .service-inner {
+        padding: 16px 18px;
+    }
+}

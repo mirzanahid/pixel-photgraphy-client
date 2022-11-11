@@ -102,7 +102,7 @@ const Login = () => {
                 <div className="button-group">
                   <button onClick={handlerForGoogleSignin} className='social-signup'><img className='google-icon' src={google} alt="" /> Continue with Google</button>
                 </div>
-                <p>Don't you have an account? <Link to={'/signup'}>Sign Up</Link></p>
+                <p className='signUp-foot'>Don't you have an account? <Link to={'/signup'}>Sign Up</Link></p>
               </div>
             </Col>
             <Col lg='6'></Col>

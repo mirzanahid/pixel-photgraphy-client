@@ -135,7 +135,7 @@ const Signup = () => {
                                 <div className="button-group">
                                     <button onClick={handlerForGoogleSignin} className='social-signup'><img className='google-icon' src={google} alt="" /> Continue with Google</button>
                                 </div>
-                                <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
+                                <p className='signUp-foot'>Already have an account? <Link to={'/login'}>Log in</Link></p>
                             </div>
                         </Col>
                         <Col lg='6'></Col>

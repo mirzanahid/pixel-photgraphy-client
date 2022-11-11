@@ -7,7 +7,7 @@ import './SingleService.css'
 const SingleService = ({ service }) => {
     const { title, thumbnail_url, ratings, price, description, _id } = service;
     return (
-        <Col lg='4' className='mt-4'>
+        <Col lg='4' md='4' className='mt-4'>
             <PhotoProvider>
                 <div className='service'>
                     <PhotoView src={thumbnail_url}>

@@ -3,10 +3,11 @@
     background-size: cover;
     position: relative;
     height: 1200px;
- 
+
 }
-.signup .overlay{
-    background: rgba(0, 0, 0,0.6);
+
+.signup .overlay {
+    background: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 0;
     left: 0;
@@ -15,7 +16,8 @@
     display: flex;
     align-items: center;
 }
-.signup-heading{
+
+.signup-heading {
     margin-bottom: 40px;
     text-align: center;
     font-family: Roboto;
@@ -25,6 +27,7 @@
     color: #000;
 
 }
+
 .signup-login-form {
     background: #fff;
     padding: 35px 35px;
@@ -111,11 +114,35 @@
     border-radius: 0;
 }
 
-.error-text{
+.error-text {
     font-family: Roboto;
     font-size: 12px;
     font-weight: 500;
     line-height: 20px;
     color: red;
     margin-top: 5px;
+}
+
+.signUp-foot{
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #000;
+}
+
+
+@media only screen and (max-width: 575.98px) {
+    .signup-login-form {
+        padding: 35px 20px;
+
+    }
+    .social-signup {
+        font-size: 16px;
+
+    }
+    .signup-login-form .check-input label {
+        font-size: 12px;
+        line-height: 20px;
+    }
 }
