@@ -14,7 +14,7 @@ const auth = getAuth(app)
 // google provider
 const provider = new GoogleAuthProvider();
 const Signup = () => {
-    const { createUser, updateUserProfile, user } = useContext(AuthContext);
+    const { createUser, updateUserProfile, user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [error, setError] = useState()
@@ -50,7 +50,8 @@ const Signup = () => {
         // create new user using email and password
         createUser(email, password)
             .then(result => {
-                navigate('/')
+                logout()
+                navigate('/login')
                 handlerForUpdateNameAndPhoto(name, image)
                 form.reset()
             })
