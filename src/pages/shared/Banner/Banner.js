@@ -7,7 +7,7 @@ import './Banner.css';
 function IndividualIntervalsExample() {
     return (
         <Carousel>
-            <Carousel.Item interval={60000}>
+            <Carousel.Item interval={6000}>
                 <img
                     className="d-block w-100 h-100 slider-image"
                     src={banner1}
@@ -18,7 +18,7 @@ function IndividualIntervalsExample() {
                     <p className='banner-pra'>We truly believe that couples in love have a distinct glow on them!</p>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item interval={60000}>
+            <Carousel.Item interval={6000}>
                 <img
                     className="d-block w-100 h-100 slider-image"
                     src={banner2}

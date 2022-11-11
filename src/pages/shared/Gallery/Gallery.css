@@ -39,3 +39,11 @@
 .insta-gallery:hover .overlay{
  display: block;
 }
+
+/* responsive start */
+
+@media only screen and (max-width: 767.98px) {
+    .insta-gallery {
+        margin-bottom: 15px;
+    }
+}

@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allServices',
-                element: <PrivateRoute><AllServices></AllServices></PrivateRoute>
+                element: <AllServices></AllServices>
             },
             {
                 path: '/service_details/:id',
@@ -46,7 +46,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addservice',
-                element: <AddService></AddService>
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>
             },
             {
                 path: '/blog',

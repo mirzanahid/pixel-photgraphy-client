@@ -98,7 +98,6 @@ const ServiceDetails = () => {
                 </Breadcrumb>
             </div>
             <Container>
-
                 <Row className='d-flex justify-content-center'>
                     <Col lg='8'>
                         <div className="service-details">
