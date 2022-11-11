@@ -3,7 +3,8 @@ import React, { useContext, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import google from '../../../assets/google.png'
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import app from '../../../firebase/firebase.config';
@@ -22,6 +23,9 @@ const Signup = () => {
     const [passwordError, setPasswordError] = useState()
     const [checked, setChecked] = useState(false);
 
+    // location state
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
     useTitle('SignUp');
     //  login with email and password
     const signUpHandler = (e) => {
@@ -52,6 +56,16 @@ const Signup = () => {
             .then(result => {
                 logout()
                 navigate('/login')
+                toast.success('SignUp Successful Please login!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 handlerForUpdateNameAndPhoto(name, image)
                 form.reset()
             })
@@ -81,7 +95,35 @@ const Signup = () => {
     const handlerForGoogleSignin = () => {
         signInWithPopup(auth, provider)
             .then(result => {
-                navigate('/')
+                const user = result.user;
+                const currentUser = {
+                    email: user.email
+                }
+                //  get jwt token
+                fetch(`https://pixel-photography-server.vercel.app/jwt`, {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+
+                navigate(from, { replace: true })
+                toast.success('SignUp Successful Please login!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
             })
             .catch(error => {
                 console.error('error', error)

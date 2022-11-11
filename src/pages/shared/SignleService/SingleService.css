@@ -1,13 +1,9 @@
 .service {
-
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
 }
-
 .service-inner {
     padding: 25px 30px;
 }
-
 .service-image {
     width: 100%;
 }

@@ -9,6 +9,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../../hooks/useTitle';
+import { toast } from 'react-toastify';
 
 
 const ServiceDetails = () => {
@@ -21,13 +22,10 @@ const ServiceDetails = () => {
     const [emptyReview, setEmptyReview] = useState(false)
     const location = useLocation();
 
-    console.log(user?.email)
     const handlerForReviewAdd = (e) => {
         e.preventDefault();
         const form = e.target;
         const reviewValue = form.review.value;
-        const date = new Date().toDateString();
-
 
         const review = {
             review_image: user?.photoURL,
@@ -35,7 +33,7 @@ const ServiceDetails = () => {
             email: user?.email,
             user_review: reviewValue,
             title: title,
-            post_date: date,
+            post_date: `${new Date()}`,
             service_id: _id
         }
 
@@ -44,7 +42,7 @@ const ServiceDetails = () => {
                 setEmptyReview(true)
             }
             else {
-                fetch('http://localhost:5000/review', {
+                fetch('https://pixel-photography-server.vercel.app/review', {
                     method: 'POST',
                     headers: {
                         'content-type': "application/json"
@@ -55,11 +53,19 @@ const ServiceDetails = () => {
                     .then(data => {
                         setReviews((oldData) => [...oldData, review]);
                         if (data.acknowledged) {
-                            alert('Review added successfully')
+                            toast.success('Review added successfully', {
+                                position: "top-right",
+                                autoClose: 5000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true,
+                                draggable: true,
+                                progress: undefined,
+                                theme: "light",
+                            });
 
                             form.reset();
                         }
-
                     })
                     .catch(error => console.error(error));
                 setEmptyReview(false)
@@ -71,13 +77,12 @@ const ServiceDetails = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://pixel-photography-server.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
             })
     }, [_id])
-
 
     return (
         <div>
@@ -156,11 +161,9 @@ const ServiceDetails = () => {
                                 </button>
                             </form>
                         </div>
-
                     </Col>
                 </Row>
             </Container>
-
         </div >
     );
 };

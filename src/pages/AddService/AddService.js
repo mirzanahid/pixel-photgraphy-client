@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
@@ -28,7 +29,7 @@ const AddService = () => {
         }
 
         else {
-            fetch('http://localhost:5000/addService', {
+            fetch('https://pixel-photography-server.vercel.app/addService', {
                 method: 'POST',
                 headers: {
                     'content-type': "application/json"
@@ -37,21 +38,22 @@ const AddService = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
                     if (data.acknowledged) {
-                        alert('Service added successfully')
+                        toast.success('Service added successfully', {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                        });
                         form.reset();
                     }
                 })
                 .catch(error => console.error(error));
-
-
         }
-
-
-
-
-
     }
     return (
         <div>
@@ -99,7 +101,7 @@ const AddService = () => {
                                         style={{ height: '100px' }}
                                         name='description'
                                     />
-                                    
+
                                     <p className='error-text'>{error}</p>
                                 </Form.Group>
 

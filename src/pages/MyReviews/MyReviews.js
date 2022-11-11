@@ -6,23 +6,27 @@ import useTitle from '../../hooks/useTitle';
 import ReviewSingle from '../shared/ReviewSingle/ReviewSingle';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/private_reviews?email=${user?.email}`, {
+        fetch(`https://pixel-photography-server.vercel.app/private_reviews?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logout()
+                }
+                return res.json()
+            })
             .then(data => {
                 setReviews(data)
             })
     }, [user?.email])
 
     useTitle('My Reviews')
-
     return (
         <div>
             <div className="page-header">
@@ -41,7 +45,7 @@ const MyReviews = () => {
                                 reviews.length !== 0 ?
                                     reviews.map(review => <ReviewSingle key={review._id} review={review} setReviews={setReviews} reviews={reviews} condition={true}></ReviewSingle>)
                                     :
-                                    <p className='empty-message'>no data to show</p>
+                                    <p className='empty-message'>No reviews were added</p>
                             }
                         </Col>
                     </Row>

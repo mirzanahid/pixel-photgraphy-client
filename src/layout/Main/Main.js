@@ -1,6 +1,6 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 import Footer from '../../pages/shared/Footer/Footer';
 import Header from '../../pages/shared/Header/Header';
 
@@ -11,6 +11,7 @@ const Main = () => {
             <Outlet></Outlet>
             <ToastContainer></ToastContainer>
             <Footer></Footer>
+            <ScrollRestoration />
         </div>
     );
 };

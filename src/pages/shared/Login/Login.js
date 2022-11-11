@@ -9,6 +9,7 @@ import useTitle from '../../../hooks/useTitle';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import app from '../../../firebase/firebase.config';
+import { toast } from 'react-toastify';
 
 const auth = getAuth(app)
 // google provider
@@ -38,7 +39,7 @@ const Login = () => {
           email: user.email
         }
         //  get jwt token
-        fetch(`http://localhost:5000/jwt`, {
+        fetch(`https://pixel-photography-server.vercel.app/jwt`, {
           method: 'POST',
           headers: {
             'content-type': 'application/json'
@@ -50,6 +51,16 @@ const Login = () => {
           .then(data => {
             localStorage.setItem('token', data.token)
           })
+        toast.success('Login Successful', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         navigate(from, { replace: true })
         form.email.reset()
         form.password.reset()
@@ -68,7 +79,35 @@ const Login = () => {
   const handlerForGoogleSignin = () => {
     signInWithPopup(auth, provider)
       .then(result => {
-        navigate('/')
+        const user = result.user;
+        const currentUser = {
+          email: user.email
+        }
+        //  get jwt token
+        fetch(`https://pixel-photography-server.vercel.app/jwt`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(currentUser)
+
+        })
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem('token', data.token)
+          })
+
+          navigate(from, { replace: true })
+        toast.success('Login Successful', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       })
       .catch(error => {
         console.error('error', error)

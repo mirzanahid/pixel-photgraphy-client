@@ -33,16 +33,16 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/myreviews',
-                element: <MyReviews></MyReviews>
+                element: <PrivateRoute> <MyReviews></MyReviews></PrivateRoute>
             },
             {
                 path: '/allServices',
-                element: <AllServices></AllServices>
+                element: <PrivateRoute><AllServices></AllServices></PrivateRoute>
             },
             {
                 path: '/service_details/:id',
                 element: <ServiceDetails></ServiceDetails>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://pixel-photography-server.vercel.app/services/${params.id}`)
             },
             {
                 path: '/addservice',

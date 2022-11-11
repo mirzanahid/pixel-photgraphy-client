@@ -28,12 +28,9 @@ const Header = () => {
                                     <NavLink onClick={() => setExpanded(false)} to={'/addservice'} className={({ isActive }) => isActive ? 'active' : undefined}>Add Service</NavLink>
                                     <Link onClick={logout} to={'/login'} className="primary-button authentication-btn">Log Out</Link>
                                 </>
-
                                 : 
                                 <Link onClick={() => setExpanded(false)} to={'/login'} className="primary-button authentication-btn">Log in</Link>
                         }
-
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>

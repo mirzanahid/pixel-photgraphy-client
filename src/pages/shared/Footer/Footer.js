@@ -27,8 +27,6 @@ const Footer = () => {
                                 :
                                 null
                         }
-
-
                     </div>
                     <div className="social">
                         <ul>

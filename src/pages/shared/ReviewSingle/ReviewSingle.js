@@ -4,6 +4,7 @@ import { FaTrash, FaEdit } from "react-icons/fa";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FloatingLabel, Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
 const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
     const { reviewer_name, review_image, user_review, post_date, title, _id } = review
@@ -14,17 +15,24 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
         e.preventDefault();
         const sure = window.confirm('Are you sure you want to delete this review')
         if (sure) {
-            fetch(`http://localhost:5000/reviews/${_id}`, {
+            fetch(`https://pixel-photography-server.vercel.app/reviews/${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    alert('Review Delete Successfully');
+                    toast.success('Review Delete Successfully', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
                     const remainingReviews = reviews.filter(rev => rev._id !== _id)
                     setReviews(remainingReviews)
-
-                }
-                )
+                })
         }
 
     }
@@ -32,12 +40,12 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
-    const handlerForEditReview = (e) => {
+    const handlerForEditReview = (e, id) => {
         e.preventDefault();
         const form = e.target;
         const updateReviewValue = form.updateReview.value;
-        fetch(`http://localhost:5000/updatereviews/${_id}`, {
-            method: 'PATCH',
+        fetch(`https://pixel-photography-server.vercel.app/updatereviews/${id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': "application/json"
             },
@@ -76,7 +84,7 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                             <h3>{reviewer_name}</h3>
                         </div>
                         <div className="date">
-                            <p className='review-date'>Posted On: <span>{post_date}</span></p>
+                            <p className='review-date'>Posted On: <span>{post_date.slice(0, 10)}</span></p>
                         </div>
                     </div>
                 </div>
@@ -99,7 +107,7 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
             </div>
             <div className="divider2"></div>
             <Modal className='custom' show={show} onHide={handleClose}>
-                <form onSubmit={handlerForEditReview}>
+                <form onSubmit={(e) => handlerForEditReview(e, _id)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Update Review</Modal.Title>
                     </Modal.Header>
@@ -123,6 +131,10 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                     </Modal.Footer>
                 </form>
             </Modal>
+
+
+
+
         </div>
     );
 };

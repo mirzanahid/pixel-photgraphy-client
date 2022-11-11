@@ -32,13 +32,12 @@ const AuthProvider = ({ children }) => {
         setLoad(false)
         return signInWithEmailAndPassword(auth, email, password)
     }
+
     // logout
     const logout = () => {
         setLoad(false)
         return signOut(auth)
     }
-
-
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setLoad(false)
