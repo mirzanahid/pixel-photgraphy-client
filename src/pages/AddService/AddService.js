@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Col, Container, FloatingLabel, Row } from 'react-bootstrap';
+import { Breadcrumb, Col, Container, Row } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
@@ -92,7 +92,6 @@ const AddService = () => {
                                     <p className='error-text'>{error}</p>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <p className='error-text'>{error}</p>
                                     <Form.Label>Description</Form.Label>
                                     <Form.Control
                                         as="textarea"

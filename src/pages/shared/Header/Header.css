@@ -2,7 +2,11 @@
     background: #fff;
     /* background: #FFACC7; */
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    z-index: 999;
 }
 
 .logo {
@@ -23,7 +27,6 @@
 
 }
 
-
 .main-nav .active {
     color: #FF8DC7;
 }
@@ -42,8 +45,33 @@
     color: #FF8DC7;
 }
 
-
-
 .authentication-btn {
     margin-left: 40px;
+}
+
+
+
+/* =====responsive for mobile device====== */
+
+@media only screen and (max-width: 575.98px) {
+    .logo {
+        height: 35px;
+    }
+    .main-nav {
+        padding: 20px 0;
+    }
+    .main-nav a {
+        margin-top: 18px;
+        margin-left: 0;
+    }
+}
+@media only screen and (min-width: 576px) and (max-width: 991.98px) {
+
+    .main-nav {
+        padding: 20px 0;
+    }
+    .main-nav a {
+        margin-top: 18px;
+        margin-left: 0;
+    }
 }

@@ -3,31 +3,34 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 import logo from '../../../assets/logo.svg'
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
+    const [expanded, setExpanded] = useState(false);
+
+
     return (
-        <Navbar className='navbar' expand="lg">
+        <Navbar expanded={expanded} className='navbar' expand="lg">
             <Container>
                 <Navbar.Brand> <Link to={'/'}><img className='logo' src={logo} alt="" /></Link></Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle onClick={() => setExpanded(expanded ? false : "expanded")} aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto d-flex align-items-center main-nav">
-                        <NavLink to={'/'} className={({ isActive }) => isActive ? 'active' : undefined}>Home</NavLink>
-                        <NavLink to={'/blog'} className={({ isActive }) => isActive ? 'active' : undefined}>Blog</NavLink>
+                        <NavLink onClick={() => setExpanded(false)} to={'/'} className={({ isActive }) => isActive ? 'active' : undefined}>Home</NavLink>
+                        <NavLink onClick={() => setExpanded(false)} to={'/blog'} className={({ isActive }) => isActive ? 'active' : undefined}>Blog</NavLink>
                         {
                             user?.email ?
                                 <>
-                                    <NavLink to={'/myreviews'} className={({ isActive }) => isActive ? 'active' : undefined}>My Reviews</NavLink>
-                                    <NavLink to={'/addservice'} className={({ isActive }) => isActive ? 'active' : undefined}>Add Service</NavLink>
+                                    <NavLink onClick={() => setExpanded(false)} to={'/myreviews'} className={({ isActive }) => isActive ? 'active' : undefined}>My Reviews</NavLink>
+                                    <NavLink onClick={() => setExpanded(false)} to={'/addservice'} className={({ isActive }) => isActive ? 'active' : undefined}>Add Service</NavLink>
                                     <Link onClick={logout} to={'/login'} className="primary-button authentication-btn">Log Out</Link>
                                 </>
 
-                                :
-                                <Link to={'/login'} className="primary-button authentication-btn">Log in</Link>
+                                : 
+                                <Link onClick={() => setExpanded(false)} to={'/login'} className="primary-button authentication-btn">Log in</Link>
                         }
 
 
