@@ -47,7 +47,7 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
         const updateReview ={
             user_review: updateReviewValue
         }
-        fetch(`http://localhost:5000/updatereviews/${id}`, {
+        fetch(`https://pixel-photography-server.vercel.app/updatereviews/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': "application/json"
@@ -133,10 +133,6 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
                     </Modal.Footer>
                 </form>
             </Modal>
-
-
-
-
         </div>
     );
 };
