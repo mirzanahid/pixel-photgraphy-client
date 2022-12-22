@@ -97,7 +97,7 @@ const Login = () => {
             localStorage.setItem('token', data.token)
           })
 
-          navigate(from, { replace: true })
+        navigate(from, { replace: true })
         toast.success('Login Successful', {
           position: "top-right",
           autoClose: 5000,

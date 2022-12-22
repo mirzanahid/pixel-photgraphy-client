@@ -10,8 +10,6 @@ import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 const Header = () => {
     const { user, logout } = useContext(AuthContext);
     const [expanded, setExpanded] = useState(false);
-
-
     return (
         <Navbar expanded={expanded} className='navbar' expand="lg">
             <Container>

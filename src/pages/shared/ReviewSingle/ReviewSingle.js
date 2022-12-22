@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
     const { reviewer_name, review_image, user_review, post_date, title, _id } = review
     const [show, setShow] = useState(false);
-
     const handlerForDeleteReview = (e) => {
 
         e.preventDefault();
@@ -41,22 +40,25 @@ const ReviewSingle = ({ review, condition, setReviews, reviews }) => {
     const handleClose = () => setShow(false);
 
     const handlerForEditReview = (e, id) => {
+
         e.preventDefault();
         const form = e.target;
         const updateReviewValue = form.updateReview.value;
-        fetch(`https://pixel-photography-server.vercel.app/updatereviews/${id}`, {
+        const updateReview ={
+            user_review: updateReviewValue
+        }
+        fetch(`http://localhost:5000/updatereviews/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': "application/json"
             },
-            body: JSON.stringify(updateReviewValue)
+            body: JSON.stringify(updateReview)
         })
 
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(error => console.error(error));
     }
-
 
 
 
